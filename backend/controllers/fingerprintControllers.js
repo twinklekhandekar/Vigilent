@@ -1,6 +1,6 @@
 const Fingerprint = require('../models/Fingerprint');
 
-// Save fingerprint
+
 exports.saveFingerprint = async (req, res) => {
   try {
     const { id, data, createdAt, userAgent } = req.body;
@@ -17,7 +17,6 @@ exports.saveFingerprint = async (req, res) => {
   }
 };
 
-// Optional: get all fingerprints (for admin/debug)
 exports.getFingerprints = async (req, res) => {
   try {
     const fingerprints = await Fingerprint.find().sort({ createdAt: -1 });
