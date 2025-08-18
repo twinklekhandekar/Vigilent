@@ -1,7 +1,7 @@
-// controllers/permissionController.js
+
 const Permission = require('../models/Permission');
 
-// Get all sites
+
 const getPermissions = async (req, res) => {
   try {
     const sites = await Permission.find({ user: req.user.id }).sort({ createdAt: -1 });
@@ -11,7 +11,7 @@ const getPermissions = async (req, res) => {
   }
 };
 
-// Add new site
+
 const addPermission = async (req, res) => {
   try {
     const newSite = await Permission.create({
@@ -24,7 +24,7 @@ const addPermission = async (req, res) => {
   }
 };
 
-// Delete site
+
 const deletePermission = async (req, res) => {
   try {
     await Permission.findByIdAndDelete(req.params.id);
@@ -34,7 +34,7 @@ const deletePermission = async (req, res) => {
   }
 };
 
-// Toggle a permission
+
 const togglePermission = async (req, res) => {
   const { field } = req.body; // field: "camera"|"microphone"|"location"|"contacts"
   if (!["camera", "microphone", "location", "contacts"].includes(field)) {
