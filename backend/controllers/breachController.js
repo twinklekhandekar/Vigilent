@@ -26,16 +26,18 @@ const mockBreaches = [
   
     try {
       
-      
-      const xposedUrl = `https://api.xposedornot.com/breached?email=${encodeURIComponent(email)}`;
+  
 
-     
-      const response = await axios.get(xposedUrl, {
-        headers: {
-          "Authorization": `Bearer ${process.env.XPOSED_API_KEY}`,
-          "user-agent": "PrivacyGuard-App",
-        },
-      });
+
+      const headers = {
+        "user-agent": "PrivacyGuard-App", // mandatory header for this API
+      };
+      // Here you can integrate real breach API like "HaveIBeenPwned"
+      const response = await axios.get(
+        `https://xposedornot.com/api/v1/check-email/${encodeURIComponent(email)}`,
+        { headers, validateStatus: () => true }
+      );
+
       
       
       const breaches = response.data || [];
