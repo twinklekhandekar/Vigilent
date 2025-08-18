@@ -3,17 +3,17 @@ const { customAlphabet } = require('nanoid');
 
 
 
-// NanoID alphabet and length
+
 const nanoid = customAlphabet('abcdefghijklmnopqrstuvwxyz0123456789', 10);
 const domains = ['mailinator.com', 'tempmail.net', 'dispostable.com'];
 
-// Helper: generate random email
+
 function generateRandomEmail() {
     const prefix = nanoid(10);
     const domain = domains[Math.floor(Math.random() * domains.length)];
     return `${prefix}@${domain}`;
   }
-// List all fake emails
+
 const listEmails = async (req, res) => {
   try {
     const emails = await FakeEmail.find({ user: req.user.id }).sort({ createdAt: -1 });
@@ -38,7 +38,7 @@ const generateEmail = async (req, res) => {
   }
 };
 
-// Delete a fake email by ID
+
 const deleteEmail = async (req, res) => {
   try {
     const { id } = req.params;
