@@ -3,12 +3,12 @@ const crypto = require('crypto');
 const VaultEntry = require('../models/VaultEntry');
 const User = require('../models/User');
 
-// Secret key for encryption (store in .env)
+
 const ENCRYPTION_KEY_RAW = process.env.VAULT_SECRET || 'supersecretkey123456'; 
 const ENCRYPTION_KEY = Buffer.from(ENCRYPTION_KEY_RAW.padEnd(32, '0').slice(0, 32)); // 32 chars
 const IV_LENGTH = 16;
 
-// 🔑 Helpers for AES encryption/decryption
+
 function encrypt(text) {
   const iv = crypto.randomBytes(IV_LENGTH);
   const cipher = crypto.createCipheriv('aes-256-cbc', Buffer.from(ENCRYPTION_KEY), iv);
@@ -34,7 +34,7 @@ function decryptSafe(text) {
   }
 }
 
-// ✅ Verify vault with user password
+
 const verifyVault = async (req, res) => {
   try {
     const { password } = req.body;
@@ -54,7 +54,7 @@ const verifyVault = async (req, res) => {
   }
 };
 
-// ✅ Add vault entry
+
 const addEntry = async (req, res) => {
   try {
     const { siteName, username, password } = req.body;
@@ -80,7 +80,7 @@ const addEntry = async (req, res) => {
   }
 };
 
-// ✅ Get all vault entries
+
 const getEntries = async (req, res) => {
   try {
     const entries = await VaultEntry.find({ user: req.user.id });
@@ -100,7 +100,7 @@ const getEntries = async (req, res) => {
   }
 };
 
-// ✅ Delete vault entry
+
 const deleteEntry = async (req, res) => {
   try {
     const entryId = req.params.id;
