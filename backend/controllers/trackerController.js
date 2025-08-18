@@ -1,7 +1,7 @@
-// backend/controllers/trackerController.js
+
 const Tracker = require('../models/Tracker');
 
-// Demo categories for fake scanning
+
 const categories = ['Advertising', 'Analytics', 'Social', 'Fingerprinting'];
 
 function getRandomInt(max) {
@@ -13,8 +13,8 @@ exports.scanWebsite = async (req, res) => {
     const { url } = req.body;
     if (!url) return res.status(400).json({ error: 'URL is required' });
 
-    // Generate fake tracker data (replace with real API if needed)
-    const trackerCount = getRandomInt(5); // up to 5 trackers
+    
+    const trackerCount = getRandomInt(5); 
     const trackers = Array.from({ length: trackerCount }).map(() => {
       const category = categories[Math.floor(Math.random() * categories.length)];
       return {
