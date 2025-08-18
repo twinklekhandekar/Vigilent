@@ -2,28 +2,51 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Copy, Trash2, RefreshCw } from "lucide-react";
+import { useAuth } from "../context/AuthContext";
+
 import DashboardLayout from "../components/dashboard/DashboardLayout";
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "http://localhost:5000";
 
 const FakeEmailGenerator = () => {
+  const { user } = useAuth();
   const [emails, setEmails] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [processingId, setProcessingId] = useState(null);
 
   useEffect(() => {
+    if (!user) {
+      // Clear emails when no user is logged in
+      setEmails([]);
+      return;
+    }
+
     fetchEmails();
-  }, []);
+  }, [user]);
 
   const fetchEmails = async () => {
     setLoading(true);
     setError(null);
     try {
-      const res = await axios.get(`${API_BASE_URL}/api/fake-emails/list`);
+      const token = localStorage.getItem("token"); // get token
+      if (!token) {
+        setError("No token found. Please log in again.");
+        setLoading(false);
+        return;
+      }
+      const res = await axios.get(`${API_BASE_URL}/api/fake-emails/list`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        }
+      }
+        
+       );
       setEmails(res.data.emails);
     } catch (err) {
       setError("Failed to load emails");
+      console.error(err); // log for debugging
+
     } finally {
       setLoading(false);
     }
@@ -33,7 +56,10 @@ const FakeEmailGenerator = () => {
     setProcessingId("generate");
     setError(null);
     try {
-      const res = await axios.post(`${API_BASE_URL}/api/fake-emails/generate`);
+      const token = localStorage.getItem("token");
+      const res = await axios.post(`${API_BASE_URL}/api/fake-emails/generate`, {},
+        {headers:{Authorization:`Bearer ${token}`}}
+      );
       setEmails((prev) => [res.data.email, ...prev]);
     } catch (err) {
       setError("Failed to generate email");
@@ -46,7 +72,9 @@ const FakeEmailGenerator = () => {
     setProcessingId(id);
     setError(null);
     try {
-      await axios.delete(`${API_BASE_URL}/api/fake-emails/${id}`);
+      await axios.delete(`${API_BASE_URL}/api/fake-emails/${id}`,{
+        headers:{Authorization: `Bearer ${localStorage.getItem("token")}`}
+      });
       setEmails((prev) => prev.filter((email) => email._id !== id));
     } catch (err) {
       setError("Failed to delete email");

@@ -22,9 +22,10 @@ export default function VaultPage() {
     setLoading(true);
     try {
       const token = localStorage.getItem('token');
+      const payload = { password };
       const res = await axios.post(
         `${API_BASE}/verify`,
-        { password },
+        payload,
         { headers: { Authorization: `Bearer ${token}` } }
       );
       if (res.data.success) {
@@ -56,13 +57,14 @@ export default function VaultPage() {
   };
 
   const handleDelete = async (id) => {
+     // 👈 add thi
     setLoading(true);
     try {
       const token = localStorage.getItem('token');
       await axios.delete(`${API_BASE}/delete/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
-      setEntries((prev) => prev.filter((entry) => entry._id !== id));
+      setEntries((prev) => prev.filter((item) => item._id !== id));
       setStatus('Entry deleted ✅');
     } catch (err) {
       setStatus(err.response?.data?.message || 'Error deleting entry');
@@ -227,7 +229,7 @@ export default function VaultPage() {
               ) : (
                 entries.map((entry, i) => (
                   <div
-                    key={i}
+                    key={entry._id}
                     className="bg-white p-4 rounded-xl shadow hover:shadow-md transition flex flex-col justify-between relative"
                   >
                             <div className="flex justify-between items-start mb-2">

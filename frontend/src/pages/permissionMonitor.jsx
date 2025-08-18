@@ -16,7 +16,10 @@ const PermissionMonitor = () => {
     useEffect(() => {
       const fetchSites = async () => {
         try {
-          const { data } = await axios.get("/api/permissions");
+          const token = localStorage.getItem('token');
+          const { data } = await axios.get("/api/permissions",{
+            headers: { Authorization: `Bearer ${token}` }
+          });
           console.log("Raw API response:", data);
           console.log("Is array?", Array.isArray(data));
           setSites(Array.isArray(data) ? data : []);
@@ -35,7 +38,10 @@ const PermissionMonitor = () => {
     );
 
     try {
-      await axios.patch(`/api/permissions/${id}`, { field });
+      const token = localStorage.getItem('token');
+      await axios.patch(`/api/permissions/${id}`, { field },{
+        headers: { Authorization: `Bearer ${token}` }
+      });
     } catch (err) {
       console.error("Error toggling permission:", err);
     }
@@ -44,7 +50,10 @@ const PermissionMonitor = () => {
   const handleAddSite = async () => {
     if (!newSite.name.trim()) return;
     try {
-      const { data } = await axios.post("/api/permissions", newSite);
+      const token = localStorage.getItem('token');
+      const { data } = await axios.post("/api/permissions", newSite, {
+        headers: { Authorization: `Bearer ${token}` }
+      });
       setSites((prev) => [...prev, data]);
       setNewSite({
         name: "",
@@ -60,7 +69,10 @@ const PermissionMonitor = () => {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`/api/permissions/${id}`);
+      const token = localStorage.getItem('token');
+      await axios.delete(`/api/permissions/${id}`,{
+        headers: { Authorization: `Bearer ${token}` }
+      });
       setSites((prev) => prev.filter((site) => site._id !== id));
     } catch (err) {
       console.error("Error deleting site:", err);
