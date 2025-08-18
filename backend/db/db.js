@@ -1,8 +1,9 @@
 const mongoose = require('mongoose')
-const uri = "mongodb+srv://twinklekhandekar1805:u0Hr2QBz7BYb4ZnE@vigilent.6g06tkq.mongodb.net/?retryWrites=true&w=majority&appName=Vigilent"
+require('dotenv').config();
+
 
 function connectDB() {
-    mongoose.connect(uri)
+    mongoose.connect(process.env.MONGO_URI)
     .then(() => {
         console.log('Connected to MongoDB Atlas');
     })
