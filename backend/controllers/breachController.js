@@ -1,4 +1,4 @@
-// backend/controllers/breachController.js
+
 const axios = require('axios');
 const mockBreaches = [
     {
@@ -25,11 +25,11 @@ const mockBreaches = [
     }
   
     try {
-      // Here you can integrate real breach API like "HaveIBeenPwned"
-      // For now, return mock breaches for testing
+      
+      
       const xposedUrl = `https://api.xposedornot.com/breached?email=${encodeURIComponent(email)}`;
 
-      // If XposedOrNot requires an API key, add it to headers
+     
       const response = await axios.get(xposedUrl, {
         headers: {
           "Authorization": `Bearer ${process.env.XPOSED_API_KEY}`,
