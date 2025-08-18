@@ -47,13 +47,15 @@ const EmailBreachCheck = () => {
   const privacyScore = breaches.length === 0 ? 100 : Math.max(0, 100 - breaches.length * 15);
 
 
-  const displayedBreaches = breaches
+  const displayedBreaches =  Array.isArray(breaches)
+  ? breaches
     .filter(b => (filterDemo ? b.name.toLowerCase().includes('mock') : true))
     .sort((a, b) =>
       sortNewest
         ? new Date(b.breachDate) - new Date(a.breachDate)
         : new Date(a.breachDate) - new Date(b.breachDate)
-    );
+    )
+    : [];
 
   return (
     <DashboardLayout>

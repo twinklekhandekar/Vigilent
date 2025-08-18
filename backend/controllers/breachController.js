@@ -40,7 +40,7 @@ const mockBreaches = [
 
       
       
-      const breaches = response.data || [];
+      const breaches = response.data?.breaches || [];
 
       return res.json({ breaches });
     } catch (error) {
