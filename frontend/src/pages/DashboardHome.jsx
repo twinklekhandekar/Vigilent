@@ -13,6 +13,8 @@ const Dashboard = () => {
   const [privacyScore, setPrivacyScore] = useState(87);
   const [time, setTime] = useState(new Date().toLocaleTimeString());
 
+  const navigate = useNavigate();
+
   const tips = [
     "Use unique passwords for each account.",
     "Enable two-factor authentication.",
@@ -134,16 +136,17 @@ const Dashboard = () => {
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 p-1 ">
                  
                   {[
-                    { icon: "🛡️", label: "Fake Email Generator" },
+                    { icon: "🛡️", label: "Fake Email Generator", path: "/dashboard/fake-email" },
                     
-                    { icon: "📡", label: "Tracker Scanner" },
-                    { icon: "📧", label: "Email Breach Check" },
-                    { icon: "🔑", label: "Permission Monitor" },
-                    { icon: "🖐️", label: "Fingerprint Analyzer" },
-                    { icon: "🔒", label: "Password Vault" },
+                    { icon: "📡", label: "Tracker Scanner",path: "/dashboard/tracker-scanner" },
+                    { icon: "📧", label: "Email Breach Check",path: "/dashboard/email-breach" },
+                    { icon: "🔑", label: "Permission Monitor",path: "/dashboard/permission-monitor"  },
+                    { icon: "🖐️", label: "Fingerprint Analyzer" ,path: "/dashboard/fingerprint"},
+                    { icon: "🔒", label: "Password Vault",path: "/dashboard/vault" },
                   ].map((card, i) => (
                     <div
                       key={i}
+                      onClick={() => navigate(card.path)}
                       className="bg-white rounded-2xl shadow-md p-4 flex flex-col items-center justify-center hover:scale-105 transition-transformn duration-300"
                     >
                       <div className="text-3xl">{card.icon}</div>
