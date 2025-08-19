@@ -1,6 +1,7 @@
 // src/pages/EmailBreachCheck.jsx
 import React, { useState } from 'react';
 import axios from 'axios';
+import { API_BASE_URL } from './config';
 import DashboardLayout from '../components/dashboard/DashboardLayout';
 import { motion } from 'framer-motion';
 import { pageVariants, pageTransition } from '../utils/animations';
@@ -22,7 +23,7 @@ const EmailBreachCheck = () => {
     setBreaches([]);
 
     try {
-      const res = await axios.post('http://localhost:5000/api/breach/check', { email });
+      const res = await axios.post(`${API_BASE_URL}/api/breach/check`, { email });
       const fetchedBreaches = res.data.breaches || [];
       setBreaches(fetchedBreaches);
 

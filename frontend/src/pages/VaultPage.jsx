@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { useAuth } from '../context/AuthContext';
 import axios from 'axios';
+import { API_BASE_URL } from './config';
 import DashboardLayout from '../components/dashboard/DashboardLayout';
 
-const API_BASE = 'http://localhost:5000/api/vault';
+const API_BASE = `${API_BASE_URL}/vault`;
 
 export default function VaultPage() {
   const { token } = useAuth();

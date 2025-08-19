@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import FingerprintJS from '@fingerprintjs/fingerprintjs';
 import axios from 'axios';
 import DashboardLayout from '../components/dashboard/DashboardLayout';
+import { API_BASE_URL } from './config';
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000';
 
