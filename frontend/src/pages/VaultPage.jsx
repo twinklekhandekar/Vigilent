@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useAuth } from '../context/AuthContext';
 import axios from 'axios';
-import { API_BASE_URL } from '../config';
 import DashboardLayout from '../components/dashboard/DashboardLayout';
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000';
 
-const API_BASE = `${API_BASE_URL}/vault`;
 
 export default function VaultPage() {
   const { token } = useAuth();
@@ -25,7 +24,7 @@ export default function VaultPage() {
       const token = localStorage.getItem('token');
       const payload = { password };
       const res = await axios.post(
-        `${API_BASE}/verify`,
+        `${API_BASE_URL}/api/vault/verify`,
         payload,
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -46,7 +45,7 @@ export default function VaultPage() {
     setLoading(true);
     try {
       const token = localStorage.getItem('token');
-      const res = await axios.get(`${API_BASE}/entries`, {
+      const res = await axios.get(`${API_BASE_URL}/api/vault/entries`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setEntries(res.data || []);
@@ -62,7 +61,7 @@ export default function VaultPage() {
     setLoading(true);
     try {
       const token = localStorage.getItem('token');
-      await axios.delete(`${API_BASE}/delete/${id}`, {
+      await axios.delete(`${API_BASE_URL}/api/vault/delete/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setEntries((prev) => prev.filter((item) => item._id !== id));
