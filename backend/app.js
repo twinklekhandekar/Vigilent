@@ -11,8 +11,33 @@ const vaultRoutes = require('./routes/vault.routes');
 
 dotenv.config();
 const app = express()
-app.use(cors());
+
+const allowedOrigins = [
+    process.env.FRONTEND_URL,       
+    'http://localhost:5173',
+    'http://localhost:4173'
+  ].filter(Boolean);
+  
+
+
+app.use(cors({
+    origin(origin, cb) {
+        if (!origin) return cb(null, true); // allow REST tools / same origin
+        return allowedOrigins.includes(origin)
+          ? cb(null, true)
+          : cb(new Error(`CORS blocked: ${origin}`));
+      },
+      credentials: true
+}));
+
+
+
 app.use(express.json())
+
+app.get('/health', (req, res) => {
+    res.status(200).json({ ok: true, uptime: process.uptime() });
+  });
+
 
 app.use('/api/auth', authRoutes);
 app.use("/api/breach", breachRoutes);
