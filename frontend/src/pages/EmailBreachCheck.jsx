@@ -1,7 +1,7 @@
 // src/pages/EmailBreachCheck.jsx
 import React, { useState } from 'react';
 import axios from 'axios';
-import { API_BASE_URL } from './config';
+import { API_BASE_URL } from '../config';
 import DashboardLayout from '../components/dashboard/DashboardLayout';
 import { motion } from 'framer-motion';
 import { pageVariants, pageTransition } from '../utils/animations';
