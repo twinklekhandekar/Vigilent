@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import ToggleSwitch from "../../components/common/ToggleSwitch";
+import ToggleSwitch from "../components/common/ToggleSwitch";
 import axios from "axios";
 import DashboardLayout from "../components/dashboard/DashboardLayout";
 
