@@ -3,6 +3,9 @@ import ToggleSwitch from "../components/common/toggleSwitch";
 import axios from "axios";
 import DashboardLayout from "../components/dashboard/DashboardLayout";
 
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000';
+
+
 const PermissionMonitor = () => {
   const [sites, setSites] = useState([]);
   const [newSite, setNewSite] = useState({
@@ -17,7 +20,7 @@ const PermissionMonitor = () => {
       const fetchSites = async () => {
         try {
           const token = localStorage.getItem('token');
-          const { data } = await axios.get("/api/permissions",{
+          const { data } = await axios.get(`${API_BASE_URL}/api/permissions`,{
             headers: { Authorization: `Bearer ${token}` }
           });
           console.log("Raw API response:", data);
@@ -51,7 +54,7 @@ const PermissionMonitor = () => {
     if (!newSite.name.trim()) return;
     try {
       const token = localStorage.getItem('token');
-      const { data } = await axios.post("/api/permissions", newSite, {
+      const { data } = await axios.post(`${API_BASE_URL}/api/permissions`, newSite, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setSites((prev) => [...prev, data]);
@@ -70,7 +73,7 @@ const PermissionMonitor = () => {
   const handleDelete = async (id) => {
     try {
       const token = localStorage.getItem('token');
-      await axios.delete(`/api/permissions/${id}`,{
+      await axios.delete(`${API_BASE_URL}/api/permissions/${id}`,{
         headers: { Authorization: `Bearer ${token}` }
       });
       setSites((prev) => prev.filter((site) => site._id !== id));
