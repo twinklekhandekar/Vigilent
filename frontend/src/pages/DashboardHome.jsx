@@ -4,6 +4,7 @@ import { useAuth } from "../context/AuthContext";
 import { motion } from "framer-motion";
 import Sidebar from '../components/dashboard/SideBar';
 import { pageVariants, pageTransition } from '../utils/animations';
+import { useNavigate } from "react-router-dom";
 
 
 const Dashboard = () => {
