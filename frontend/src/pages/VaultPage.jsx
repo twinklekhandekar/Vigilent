@@ -95,7 +95,7 @@ export default function VaultPage() {
     try {
       const token = localStorage.getItem('token');
       const res = await axios.post(
-        `${API_BASE}/add`,
+        `${API_BASE_URL}/api/vault/add`,
         { siteName, username, password: appPass },
         { headers: { Authorization: `Bearer ${token}` } }
       );
