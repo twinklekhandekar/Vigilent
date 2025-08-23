@@ -17,9 +17,11 @@ const Login = () => {
   const {login} = useAuth()
   const navigate = useNavigate()
   const [showPassword, setShowPassword] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const submithandler = async (e) => {
     e.preventDefault()
+    setIsLoading(true);
 
     try {
       const res = await axios.post(`${API_BASE_URL}/api/auth/login`, form)
@@ -37,6 +39,10 @@ const Login = () => {
     } 
     catch (error) {
       console.log(error)
+    }
+
+    finally {
+      setIsLoading(false);
     }
 
   }
@@ -67,8 +73,31 @@ const Login = () => {
 
         <button
   type="submit"
-  className="bg-cyan-700 text-white p-2 rounded w-full flex items-center justify-center">
-    Login
+  className="bg-cyan-700 text-white p-2 rounded w-full flex items-center justify-center disabled={isLoading}">
+        {isLoading ? (
+          <svg
+            className="animate-spin h-4 w-4 text-white"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+          >
+            <circle
+              className="opacity-25"
+              cx="12"
+              cy="12"
+              r="10"
+              stroke="currentColor"
+              strokeWidth="4"
+            ></circle>
+            <path
+              className="opacity-75"
+              fill="currentColor"
+              d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"
+            ></path>
+          </svg>
+        ) : (
+          "Login"
+        )}
 
 </button>
 
