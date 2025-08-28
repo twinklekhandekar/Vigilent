@@ -1,87 +1,85 @@
 🔒 Vigilent – Your Personal Privacy Dashboard
 
-Your one-stop solution to monitor, analyze, and protect your digital privacy.
-Built with MERN Stack | Real-time Privacy Insights | Secure by Design
-
-✅ Live Demo
-
-🌐 Visit Vigilent
-
-(Login or Register to explore all features)
+Vigilent is a full-stack privacy and security dashboard built with the MERN stack. It brings together modern tools to help users analyze, monitor, and protect their digital footprint in real time.
 
 ✨ Features
 
-✔ 📧 Email Breach Check – Instantly verify if your email is in a known data breach.
-✔ 🕵️ Fake Email Generator – Generate disposable, anonymous emails for safe browsing.
-✔ 🔐 Permission Monitor – Detect which sites have camera, mic, or location access & revoke them.
-✔ 📡 Tracker Scanner – Scan websites for hidden tracking scripts.
-✔ 🧬 Fingerprint Analyzer – Reveal your unique browser/device fingerprint & tracking risk.
-✔ 🗄️ Password Vault – AES-256 encrypted password storage with PBKDF2 key strengthening.
+✅ Email Breach Check – Verify if your email has appeared in known data breaches.
+✅ Fake Email Generator – Create disposable, anonymous emails to protect your identity.
+✅ Permission Monitor – Track and revoke site permissions (camera, mic, location).
+✅ Tracker Scanner – Detect and analyze trackers hidden in websites.
+✅ Fingerprint Analyzer – Reveal how unique and trackable your browser/device setup is.
+✅ Password Vault – Securely store passwords with AES-256 encryption.
 
-⚡ Tech Stack
+🚀 Tech Stack
 
 Frontend: React, TailwindCSS, Framer Motion
-Backend: Node.js, Express.js
+Backend: Node.js, Express
 Database: MongoDB
-Authentication: JWT + React Context
-Security: AES-256 Encryption, PBKDF2, External Privacy APIs
+Auth: JWT + React Context
+Security: AES-256, PBKDF2, external privacy APIs
 
-🚀 Planned Enhancements
+🖥️ Live Demo
 
-✅ Dark Mode & PWA Support
-✅ OAuth (Google Login)
-✅ Export Privacy Data (CSV/JSON)
-✅ Privacy Score & History Tracking
+🔗 Check it out here
 
-🛠 Setup Instructions
-1. Clone the Repository
+🛠️ Setup Instructions
+1️⃣ Clone the repository
 git clone https://github.com/twinklekhandekar/vigilent.git
 cd vigilent
 
-2. Install Dependencies
-# Backend
-cd server
+2️⃣ Backend Setup
+cd backend
 npm install
 
-# Frontend
-cd client
-npm install
 
-3. Configure Environment Variables
-
-Create .env files:
-
-Backend (/server/.env)
+Create a .env file inside backend folder and add:
 
 MONGO_URI=your_mongodb_connection_string
 JWT_SECRET=your_jwt_secret
 FRONTEND_URL=https://your-frontend.vercel.app
 
 
-Frontend (/client/.env)
+Run the backend:
 
-VITE_API_BASE_URL=https://your-backend.onrender.com
-
-4. Run the App
-# Backend
-cd server
 npm run dev
 
-# Frontend
-cd client
-npm run dev
+3️⃣ Frontend Setup
+cd frontend
+npm install
+npm start
 
+🌍 Deployment
 
-🌍 Deployed Links
+Frontend: Vercel
 
-Frontend: https://vigilent-weld.vercel.app
+Backend: Render
 
-Backend API: https://vigilent.onrender.com
+Database: MongoDB Atlas
 
-🏗 Contributing
+🔐 Environment Variables
+MONGO_URI=your_mongodb_connection_string
+JWT_SECRET=your_jwt_secret
+FRONTEND_URL=https://your-frontend.vercel.app
 
-Pull requests are welcome. For major changes, please open an issue first.
+✅ Roadmap / Future Enhancements
 
-📜 License
+🔔 Real-time permission monitoring
 
-MIT License © 2025 Twinkle Khandekar
+📊 Privacy Score calculation
+
+🌙 Dark Mode & PWA Support
+
+🔒 OAuth Login (Google/GitHub)
+
+🧪 Automated Unit & Integration Tests
+
+🏗️ Author
+
+👩‍💻 Twinkle Khandekar
+📌 GitHub
+ | LinkedIn
+
+⭐ Support
+
+If you like this project, give it a star ⭐ on GitHub!
