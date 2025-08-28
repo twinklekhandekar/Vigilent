@@ -21,7 +21,7 @@ Security: AES-256, PBKDF2, external privacy APIs
 
 🖥️ Live Demo
 
-🔗 Check it out here
+🔗https://vigilent-weld.vercel.app/
 
 🛠️ Setup Instructions
 1️⃣ Clone the repository
