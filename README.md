@@ -4,82 +4,70 @@ Vigilent is a full-stack privacy and security dashboard built with the MERN stac
 
 ✨ Features
 
-✅ Email Breach Check – Verify if your email has appeared in known data breaches.
-✅ Fake Email Generator – Create disposable, anonymous emails to protect your identity.
-✅ Permission Monitor – Track and revoke site permissions (camera, mic, location).
-✅ Tracker Scanner – Detect and analyze trackers hidden in websites.
-✅ Fingerprint Analyzer – Reveal how unique and trackable your browser/device setup is.
-✅ Password Vault – Securely store passwords with AES-256 encryption.
+✔ 📧 Email Breach Check – Verify if your email has appeared in known data breaches.
+✔ 🕵️ Fake Email Generator – Create disposable, anonymous emails to protect your identity.
+✔ 🔐 Permission Monitor – Track and revoke site permissions (camera, mic, location).
+✔ 📡 Tracker Scanner – Detect and analyze trackers hidden in websites.
+✔ 🧬 Fingerprint Analyzer – Reveal how unique and trackable your browser/device setup is.
+✔ 🗄️ Password Vault – Securely store passwords with AES-256 encryption.
+
+Try Demo
+https://vigilent-weld.vercel.app/
 
 🚀 Tech Stack
 
 Frontend: React, TailwindCSS, Framer Motion
+
 Backend: Node.js, Express
+
 Database: MongoDB
+
 Auth: JWT + React Context
-Security: AES-256, PBKDF2, external privacy APIs
 
-🖥️ Live Demo
+Security: AES-256, PBKDF2, External Privacy APIs
 
-🔗https://vigilent-weld.vercel.app/
 
 🛠️ Setup Instructions
 1️⃣ Clone the repository
 git clone https://github.com/twinklekhandekar/vigilent.git
 cd vigilent
 
-2️⃣ Backend Setup
+2️⃣ Install dependencies
+# Backend
 cd backend
 npm install
 
+# Frontend
+cd ../frontend
+npm install
 
-Create a .env file inside backend folder and add:
+3️⃣ Configure Environment Variables
+
+Create a .env file in the backend folder and add:
 
 MONGO_URI=your_mongodb_connection_string
 JWT_SECRET=your_jwt_secret
 FRONTEND_URL=https://your-frontend.vercel.app
 
-
-Run the backend:
-
+4️⃣ Run the app locally
+# Backend
 npm run dev
 
-3️⃣ Frontend Setup
-cd frontend
-npm install
+# Frontend
 npm start
 
-🌍 Deployment
+🌍 Live Demo
 
-Frontend: Vercel
+👉 Frontend: https://your-frontend.vercel.app
 
-Backend: Render
+👉 Backend API: https://vigilent.onrender.com
 
-Database: MongoDB Atlas
+⭐ Contribute & Support
 
-🔐 Environment Variables
-MONGO_URI=your_mongodb_connection_string
-JWT_SECRET=your_jwt_secret
-FRONTEND_URL=https://your-frontend.vercel.app
+Star ⭐ the repo if you like this project
 
-✅ Roadmap / Future Enhancements
+Fork & contribute via Pull Requests
 
-🔔 Real-time permission monitoring
+📬 Contact
 
-📊 Privacy Score calculation
-
-🌙 Dark Mode & PWA Support
-
-🔒 OAuth Login (Google/GitHub)
-
-🧪 Automated Unit & Integration Tests
-
-🏗️ Author
-
-👩‍💻 Twinkle Khandekar
-📌 GitHub
- | LinkedIn
-
-⭐ Support
-
-If you like this project, give it a star ⭐ on GitHub!
+Made with ❤️ by Twinkle Khandekar
