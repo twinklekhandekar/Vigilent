@@ -1,43 +1,87 @@
-# 🔒 Vigilent – Your Personal Privacy Dashboard  
+🔒 Vigilent – Your Personal Privacy Dashboard
 
-Vigilent is a **full-stack privacy and security dashboard** built with the MERN stack. It brings together modern tools to help users **analyze, monitor, and protect their digital footprint in real time**.  
+Your one-stop solution to monitor, analyze, and protect your digital privacy.
+Built with MERN Stack | Real-time Privacy Insights | Secure by Design
 
----
+✅ Live Demo
 
-## ✨ Features  
+🌐 Visit Vigilent
 
-- **📧 Email Breach Check** – Verify if your email has appeared in known data breaches.  
-- **🕵️ Fake Email Generator** – Create disposable, anonymous emails to protect your identity.  
-- **🔐 Permission Monitor** – Track and revoke site permissions (camera, mic, location).  
-- **📡 Tracker Scanner** – Detect and analyze trackers hidden in websites.  
-- **🧬 Fingerprint Analyzer** – Reveal how unique and trackable your browser/device setup is.  
-- **🗄️ Password Vault** – Securely store passwords with AES-256 encryption.  
+(Login or Register to explore all features)
 
----
+✨ Features
 
-## 🚀 Tech Stack  
+✔ 📧 Email Breach Check – Instantly verify if your email is in a known data breach.
+✔ 🕵️ Fake Email Generator – Generate disposable, anonymous emails for safe browsing.
+✔ 🔐 Permission Monitor – Detect which sites have camera, mic, or location access & revoke them.
+✔ 📡 Tracker Scanner – Scan websites for hidden tracking scripts.
+✔ 🧬 Fingerprint Analyzer – Reveal your unique browser/device fingerprint & tracking risk.
+✔ 🗄️ Password Vault – AES-256 encrypted password storage with PBKDF2 key strengthening.
 
-- **Frontend**: React, TailwindCSS, Framer Motion  
-- **Backend**: Node.js, Express  
-- **Database**: MongoDB  
-- **Auth**: JWT + React Context  
-- **Security**: AES-256, PBKDF2, external privacy APIs  
+⚡ Tech Stack
 
----
+Frontend: React, TailwindCSS, Framer Motion
+Backend: Node.js, Express.js
+Database: MongoDB
+Authentication: JWT + React Context
+Security: AES-256 Encryption, PBKDF2, External Privacy APIs
 
-## 🛠️ Setup  
+🚀 Planned Enhancements
 
-```bash
-# Clone repo
-git clone https://github.com/your-username/vigilent.git
+✅ Dark Mode & PWA Support
+✅ OAuth (Google Login)
+✅ Export Privacy Data (CSV/JSON)
+✅ Privacy Score & History Tracking
+
+🛠 Setup Instructions
+1. Clone the Repository
+git clone https://github.com/twinklekhandekar/vigilent.git
 cd vigilent
 
-# Install dependencies
-cd backend && npm install
-cd frontend && npm install
+2. Install Dependencies
+# Backend
+cd server
+npm install
 
-# Run backend
+# Frontend
+cd client
+npm install
+
+3. Configure Environment Variables
+
+Create .env files:
+
+Backend (/server/.env)
+
+MONGO_URI=your_mongodb_connection_string
+JWT_SECRET=your_jwt_secret
+FRONTEND_URL=https://your-frontend.vercel.app
+
+
+Frontend (/client/.env)
+
+VITE_API_BASE_URL=https://your-backend.onrender.com
+
+4. Run the App
+# Backend
+cd server
 npm run dev
 
-# Run frontend
-npm start
+# Frontend
+cd client
+npm run dev
+
+
+🌍 Deployed Links
+
+Frontend: https://vigilent-weld.vercel.app
+
+Backend API: https://vigilent.onrender.com
+
+🏗 Contributing
+
+Pull requests are welcome. For major changes, please open an issue first.
+
+📜 License
+
+MIT License © 2025 Twinkle Khandekar
